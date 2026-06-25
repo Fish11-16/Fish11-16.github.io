@@ -1,0 +1,946 @@
+/* ============================================
+   个人学术主页 — 样式表
+   Xi Yu — Academic Homepage Styles
+   ============================================ */
+
+/* ----- CSS 变量（浅色主题） ----- */
+:root {
+    --color-primary: #4a90d9;
+    --color-primary-dark: #3570b0;
+    --color-primary-light: #a8c8ee;
+    --color-bg-light: #f4f8fc;
+    --color-bg-alt: #ecf3fa;
+    --color-white: #ffffff;
+    --color-text: #1e2a3a;
+    --color-text-light: #4a5c6e;
+    --color-text-muted: #8899aa;
+    --color-border: #dce6f0;
+    --color-shadow: rgba(74, 144, 217, 0.10);
+    --color-shadow-hover: rgba(74, 144, 217, 0.18);
+    --color-dots: rgba(74, 144, 217, 0.08);
+    --color-card-bg: #ffffff;
+    --color-code-bg: #eaf0f6;
+    --font-sans: "Inter", "PingFang SC", "Microsoft YaHei", "Noto Sans SC", system-ui, sans-serif;
+    --font-serif: "Source Serif 4", "Noto Serif SC", Georgia, serif;
+    --font-mono: "JetBrains Mono", "Fira Code", "Cascadia Code", Consolas, monospace;
+    --max-width: 920px;
+    --nav-height: 64px;
+    --radius: 10px;
+}
+
+/* ----- 深色主题 ----- */
+[data-theme="dark"] {
+    --color-primary: #6aacf0;
+    --color-primary-dark: #8abef4;
+    --color-primary-light: #3a5f8a;
+    --color-bg-light: #1a2432;
+    --color-bg-alt: #1e2d3d;
+    --color-white: #15202b;
+    --color-text: #e2e8f0;
+    --color-text-light: #b0bec5;
+    --color-text-muted: #78909c;
+    --color-border: #2d3f50;
+    --color-shadow: rgba(0, 0, 0, 0.25);
+    --color-shadow-hover: rgba(0, 0, 0, 0.4);
+    --color-dots: rgba(106, 172, 240, 0.06);
+    --color-card-bg: #1e2d3d;
+    --color-code-bg: #1a2a3a;
+}
+
+/* ----- Reset & Base ----- */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: var(--nav-height);
+}
+
+body {
+    font-family: var(--font-sans);
+    font-size: 16px;
+    line-height: 1.7;
+    color: var(--color-text);
+    background: var(--color-white);
+    -webkit-font-smoothing: antialiased;
+    transition: background 0.4s, color 0.4s;
+}
+
+.container {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 0 24px;
+}
+
+a {
+    color: var(--color-primary-dark);
+    text-decoration: none;
+    transition: color 0.2s;
+}
+a:hover { color: var(--color-primary); }
+
+code {
+    font-family: var(--font-mono);
+    font-size: 0.88em;
+    background: var(--color-code-bg);
+    padding: 2px 6px;
+    border-radius: 4px;
+    color: var(--color-primary-dark);
+}
+
+img { max-width: 100%; height: auto; }
+
+/* ====== 背景装饰 / Background Decoration ====== */
+.bg-decoration {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+    overflow: hidden;
+}
+
+.bg-dots {
+    position: absolute;
+    inset: 0;
+    background-image: radial-gradient(circle, var(--color-dots) 1px, transparent 1px);
+    background-size: 28px 28px;
+}
+
+/* ====== 关键帧动画 ====== */
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes countUp {
+    from { opacity: 0; transform: scale(0.6); }
+    to   { opacity: 1; transform: scale(1); }
+}
+@keyframes float {
+    0%, 100% { transform: translateY(0px) rotate(0deg); }
+    50%      { transform: translateY(-10px) rotate(2deg); }
+}
+@keyframes floatSlow {
+    0%, 100% { transform: translateY(0px); }
+    50%      { transform: translateY(-6px); }
+}
+@keyframes pulseGlow {
+    0%, 100% { box-shadow: 0 4px 20px var(--color-shadow); }
+    50%      { box-shadow: 0 4px 32px var(--color-shadow-hover); }
+}
+@keyframes underlineIn {
+    from { width: 0; }
+    to   { width: 48px; }
+}
+
+/* ====== 滚动进度条 ====== */
+.scroll-progress {
+    position: fixed;
+    top: 0; left: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--color-primary-light), var(--color-primary), var(--color-primary-dark));
+    z-index: 1001;
+    border-radius: 0 2px 2px 0;
+}
+
+/* ====== 导航栏 ====== */
+.navbar {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    height: var(--nav-height);
+    background: rgba(255, 255, 255, 0.88);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border-bottom: 1px solid var(--color-border);
+    z-index: 1000;
+    transition: box-shadow 0.3s, background 0.4s;
+}
+[data-theme="dark"] .navbar { background: rgba(21, 32, 43, 0.88); }
+
+.navbar.scrolled { box-shadow: 0 2px 16px var(--color-shadow); }
+
+.nav-container {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 0 24px;
+    display: flex;
+    align-items: center;
+    height: 100%;
+    gap: 16px;
+}
+
+.nav-brand {
+    order: 0;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--color-text);
+    white-space: nowrap;
+    letter-spacing: -0.01em;
+}
+.nav-brand:hover { color: var(--color-primary); }
+
+.nav-actions {
+    order: 2;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.nav-links { order: 1; display: flex; list-style: none; gap: 4px; }
+
+.nav-links a {
+    display: block;
+    padding: 6px 16px;
+    border-radius: 6px;
+    font-size: 0.93rem;
+    color: var(--color-text-light);
+    transition: background 0.2s, color 0.2s;
+}
+.nav-links a:hover, .nav-links a.active {
+    background: var(--color-bg-alt);
+    color: var(--color-primary-dark);
+}
+
+/* 主题切换按钮 */
+.theme-toggle {
+    width: 36px; height: 36px;
+    border-radius: 50%;
+    border: 1px solid var(--color-border);
+    background: var(--color-white);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+    color: var(--color-text-light);
+    position: relative;
+}
+.theme-toggle:hover {
+    border-color: var(--color-primary);
+    color: var(--color-primary);
+}
+
+[data-theme="light"] .icon-moon { display: none; }
+[data-theme="dark"] .icon-sun  { display: none; }
+
+/* 语言切换 */
+.lang-toggle {
+    width: 36px; height: 36px;
+    border-radius: 50%;
+    border: 1px solid var(--color-border);
+    background: var(--color-white);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+    font-family: var(--font-sans);
+    font-size: 0.75rem; font-weight: 700;
+    color: var(--color-primary-dark);
+}
+.lang-toggle:hover {
+    background: var(--color-bg-alt);
+    border-color: var(--color-primary);
+}
+
+/* 汉堡菜单 */
+.nav-toggle {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    background: none; border: none;
+    cursor: pointer; padding: 4px;
+}
+.nav-toggle span {
+    width: 22px; height: 2px;
+    background: var(--color-text);
+    border-radius: 2px;
+    transition: transform 0.3s, opacity 0.3s;
+}
+.nav-toggle.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.nav-toggle.open span:nth-child(2) { opacity: 0; }
+.nav-toggle.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+/* ====== Hero ====== */
+.hero {
+    position: relative;
+    padding: calc(var(--nav-height) + 60px) 24px 52px;
+    overflow: hidden;
+}
+
+.hero::before {
+    content: '';
+    position: absolute;
+    top: -100px; right: -60px;
+    width: 280px; height: 280px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(74, 144, 217, 0.07) 0%, transparent 70%);
+    animation: float 9s ease-in-out infinite;
+    pointer-events: none;
+}
+.hero::after {
+    content: '';
+    position: absolute;
+    bottom: -40px; left: -40px;
+    width: 160px; height: 160px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(74, 144, 217, 0.05) 0%, transparent 70%);
+    animation: floatSlow 8s ease-in-out infinite reverse;
+    pointer-events: none;
+}
+
+/* Hero 左右布局 */
+.hero-content {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    gap: 48px;
+    max-width: 780px;
+    margin: 0 auto;
+}
+
+.hero-avatar {
+    flex-shrink: 0;
+}
+
+.avatar-placeholder {
+    width: 150px; height: 150px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 4px solid var(--color-white);
+    box-shadow: 0 4px 24px var(--color-shadow);
+    overflow: hidden;
+    animation: pulseGlow 4s ease-in-out infinite;
+    transition: transform 0.4s ease;
+}
+.avatar-placeholder:hover { transform: scale(1.05); }
+.avatar-placeholder img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+}
+
+.hero-text { flex: 1; min-width: 0; }
+
+.hero-name {
+    font-family: var(--font-serif);
+    font-size: 2.4rem;
+    font-weight: 700;
+    background: linear-gradient(135deg, var(--color-primary-dark) 0%, var(--color-primary) 40%, #6db3e8 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 4px;
+    letter-spacing: -0.02em;
+    line-height: 1.2;
+}
+.hero-name-zh {
+    display: block;
+    font-size: 1.2rem;
+    font-weight: 500;
+    color: var(--color-text-muted);
+    margin-top: 2px;
+    letter-spacing: 0.08em;
+}
+
+.hero-affiliation {
+    font-size: 1rem;
+    color: var(--color-text);
+    margin-bottom: 12px;
+}
+
+.hero-bio {
+    font-size: 0.93rem;
+    color: var(--color-text-light);
+    line-height: 1.7;
+    margin-bottom: 20px;
+    max-width: 480px;
+}
+
+.hero-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.hero-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    padding: 7px 16px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: var(--color-primary-dark);
+    background: var(--color-bg-alt);
+    border: 1px solid transparent;
+    transition: all 0.2s;
+}
+.hero-link:hover {
+    background: var(--color-white);
+    border-color: var(--color-primary);
+    box-shadow: 0 2px 10px var(--color-shadow);
+    transform: translateY(-1px);
+}
+
+/* ====== Section ====== */
+.section {
+    position: relative;
+    z-index: 1;
+    padding: 72px 0;
+    counter-increment: section-counter;
+}
+.section-alt { background: var(--color-bg-light); }
+
+/* 板块背景水印编号 */
+.section .container {
+    position: relative;
+}
+.section .container::before {
+    content: "0" counter(section-counter);
+    position: absolute;
+    right: 0;
+    top: -30px;
+    font-family: var(--font-serif);
+    font-size: 8rem;
+    font-weight: 700;
+    color: var(--color-dots);
+    line-height: 1;
+    pointer-events: none;
+    z-index: 0;
+    opacity: 0.6;
+}
+[data-theme="dark"] .section .container::before {
+    opacity: 0.3;
+}
+
+.section-title {
+    font-family: var(--font-serif);
+    font-size: 1.7rem;
+    font-weight: 700;
+    color: var(--color-text);
+    margin-bottom: 32px;
+    position: relative;
+    padding-bottom: 12px;
+    z-index: 1;
+}
+.section-title::after {
+    content: '';
+    position: absolute;
+    left: 0; bottom: 0;
+    width: 48px; height: 3px;
+    background: var(--color-primary);
+    border-radius: 2px;
+}
+.section-title.revealed::after { animation: underlineIn 0.7s ease-out forwards; }
+
+/* ====== 滚动揭示 ====== */
+.reveal {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+}
+.reveal.revealed {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* ====== 新闻动态 ====== */
+.news-list { list-style: none; }
+
+.news-item {
+    display: flex;
+    gap: 16px;
+    padding: 14px 0;
+    border-bottom: 1px solid var(--color-border);
+    align-items: baseline;
+}
+.news-item:first-child { padding-top: 0; }
+.news-item:last-child { border-bottom: none; }
+
+.news-date {
+    font-weight: 500;
+    color: var(--color-primary-dark);
+    white-space: nowrap;
+    min-width: 120px;
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
+}
+
+.news-dot { font-size: 0.85rem; flex-shrink: 0; }
+
+.news-content {
+    font-size: 0.93rem;
+    color: var(--color-text-light);
+    line-height: 1.6;
+}
+.news-content em {
+    font-family: var(--font-serif);
+    font-style: italic;
+    color: var(--color-text);
+    font-weight: 500;
+}
+
+/* ====== 关于我 ====== */
+.about-content {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr;
+    gap: 44px;
+    align-items: start;
+}
+
+.about-text p {
+    margin-bottom: 14px;
+    color: var(--color-text-light);
+    font-size: 0.94rem;
+}
+
+.about-text h3 {
+    font-family: var(--font-serif);
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--color-text);
+    margin-top: 26px;
+    margin-bottom: 12px;
+}
+
+/* 时间线 */
+.timeline { list-style: none; }
+
+.timeline-item {
+    display: flex;
+    gap: 14px;
+    padding: 8px 0;
+    border-left: 2px solid var(--color-primary-light);
+    padding-left: 18px;
+    margin-left: 6px;
+    position: relative;
+    font-size: 0.93rem;
+}
+.timeline-item::before {
+    content: '';
+    position: absolute;
+    left: -5px; top: 14px;
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    background: var(--color-primary);
+}
+
+.timeline-year {
+    font-size: 0.82rem;
+    color: var(--color-primary-dark);
+    font-weight: 600;
+    white-space: nowrap;
+    min-width: 100px;
+}
+
+.timeline-desc { color: var(--color-text-light); }
+
+/* 统计数据 */
+.about-stats {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.stat-card {
+    background: rgba(255, 255, 255, 0.55);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    padding: 22px;
+    border-radius: var(--radius);
+    text-align: center;
+    border: 1px solid rgba(255, 255, 255, 0.35);
+    box-shadow: 0 2px 12px var(--color-shadow);
+    transition: box-shadow 0.3s, transform 0.3s;
+}
+[data-theme="dark"] .stat-card {
+    background: rgba(30, 45, 61, 0.6);
+    border-color: rgba(255, 255, 255, 0.08);
+}
+.stat-card:hover {
+    box-shadow: 0 8px 28px var(--color-shadow-hover);
+    transform: translateY(-2px);
+}
+
+.stat-number {
+    font-family: var(--font-serif);
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: var(--color-primary);
+    line-height: 1.2;
+}
+
+.stat-label {
+    font-size: 0.84rem;
+    color: var(--color-text-muted);
+    margin-top: 2px;
+}
+
+.stat-scholar-link {
+    display: inline-block;
+    margin-top: 8px;
+    font-size: 0.78rem;
+    color: var(--color-primary);
+    font-weight: 500;
+    opacity: 0.8;
+    transition: opacity 0.2s;
+}
+.stat-scholar-link:hover { opacity: 1; }
+
+/* ====== 研究方向 ====== */
+.research-interests {
+    margin: 20px 0 8px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px;
+}
+.ri-label {
+    font-size: 0.86rem;
+    font-weight: 600;
+    color: var(--color-text);
+    margin-right: 2px;
+}
+.ri-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+
+.ri-tag {
+    display: inline-block;
+    padding: 4px 13px;
+    border-radius: 13px;
+    font-size: 0.82rem;
+    font-weight: 500;
+    transition: transform 0.2s, box-shadow 0.2s;
+    cursor: default;
+}
+.ri-tag:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 2px 8px var(--color-shadow);
+}
+
+.ri-tag:nth-child(5n+1) { background: #e8f0fe; color: #3a7bc8; }
+.ri-tag:nth-child(5n+2) { background: #e6f3e6; color: #3a8a3a; }
+.ri-tag:nth-child(5n+3) { background: #fff3e0; color: #c07a20; }
+.ri-tag:nth-child(5n+4) { background: #f3e5f5; color: #7b3a8a; }
+.ri-tag:nth-child(5n+5) { background: #fce4ec; color: #c04060; }
+
+[data-theme="dark"] .ri-tag:nth-child(5n+1) { background: #1a3050; color: #8abef4; }
+[data-theme="dark"] .ri-tag:nth-child(5n+2) { background: #1a3a20; color: #6ab86a; }
+[data-theme="dark"] .ri-tag:nth-child(5n+3) { background: #3a2a10; color: #d0a060; }
+[data-theme="dark"] .ri-tag:nth-child(5n+4) { background: #2a1a30; color: #b070c0; }
+[data-theme="dark"] .ri-tag:nth-child(5n+5) { background: #3a1020; color: #d07080; }
+
+/* ====== 荧光笔高亮 ====== */
+.hl {
+    background: linear-gradient(180deg, transparent 55%, rgba(74, 144, 217, 0.18) 55%);
+    padding: 0 2px;
+}
+[data-theme="dark"] .hl {
+    background: linear-gradient(180deg, transparent 55%, rgba(106, 172, 240, 0.25) 55%);
+}
+
+/* ====== 论文发表 ====== */
+.pub-filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 22px;
+}
+
+.pub-filter {
+    padding: 6px 18px;
+    border-radius: 18px;
+    font-size: 0.87rem;
+    border: 1px solid var(--color-border);
+    background: var(--color-card-bg);
+    color: var(--color-text-light);
+    cursor: pointer;
+    transition: all 0.2s;
+    font-family: var(--font-sans);
+}
+.pub-filter:hover {
+    border-color: var(--color-primary);
+    color: var(--color-primary-dark);
+}
+.pub-filter.active {
+    background: var(--color-primary);
+    border-color: var(--color-primary);
+    color: #fff;
+}
+
+.pub-year-nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-bottom: 26px;
+}
+
+.pub-year-btn {
+    padding: 4px 14px;
+    border-radius: 14px;
+    font-size: 0.83rem;
+    border: none;
+    background: transparent;
+    color: var(--color-text-muted);
+    cursor: pointer;
+    transition: all 0.2s;
+    font-family: var(--font-sans);
+}
+.pub-year-btn:hover, .pub-year-btn.active {
+    background: var(--color-primary-light);
+    color: var(--color-primary-dark);
+}
+
+/* 论文卡片 — 左边框色条风格 */
+.pub-item {
+    background: var(--color-card-bg);
+    border-radius: var(--radius);
+    padding: 22px 24px;
+    margin-bottom: 14px;
+    border: 1px solid var(--color-border);
+    border-left: 4px solid var(--color-primary);
+    box-shadow: 0 1px 4px var(--color-shadow);
+    transition: box-shadow 0.3s, transform 0.3s, border-color 0.3s;
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+}
+.pub-item:hover {
+    box-shadow: 0 6px 24px var(--color-shadow-hover), 0 0 0 1px rgba(74, 144, 217, 0.15);
+    transform: translateY(-1px);
+    border-left-color: var(--color-primary-dark);
+}
+
+/* 论文缩略图 */
+.pub-thumb {
+    flex-shrink: 0;
+    width: 100px;
+    height: 70px;
+    border-radius: 6px;
+    overflow: hidden;
+    background: var(--color-bg-alt);
+    display: none;
+}
+.pub-thumb.has-thumb { display: block; }
+.pub-thumb img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+}
+
+.pub-body { flex: 1; min-width: 0; }
+
+.pub-title {
+    font-family: var(--font-serif);
+    font-size: 1.02rem;
+    font-weight: 600;
+    color: var(--color-text);
+    margin-bottom: 3px;
+    line-height: 1.45;
+}
+
+.pub-authors {
+    font-size: 0.88rem;
+    color: var(--color-text-light);
+    margin-bottom: 3px;
+}
+.pub-authors .me {
+    font-weight: 700;
+    color: var(--color-primary-dark);
+    text-decoration: underline;
+    text-decoration-color: var(--color-primary-light);
+    text-underline-offset: 3px;
+}
+
+.pub-venue {
+    font-size: 0.85rem;
+    color: var(--color-text-muted);
+    font-style: italic;
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.pub-badge {
+    display: inline-block;
+    padding: 2px 10px;
+    border-radius: 10px;
+    font-size: 0.74rem;
+    font-weight: 600;
+    font-style: normal;
+}
+.badge-journal    { background: #e8f0fe; color: #3a7bc8; }
+.badge-conference { background: #e6f3e6; color: #3a8a3a; }
+.badge-preprint   { background: #fff3e0; color: #c07a20; }
+[data-theme="dark"] .badge-journal    { background: #1a3050; color: #8abef4; }
+[data-theme="dark"] .badge-conference { background: #1a3a20; color: #6ab86a; }
+[data-theme="dark"] .badge-preprint   { background: #3a2a10; color: #d0a060; }
+
+.pub-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+}
+
+.pub-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 5px 12px;
+    border-radius: 14px;
+    font-size: 0.8rem;
+    background: var(--color-bg-alt);
+    color: var(--color-primary-dark);
+    border: 1px solid transparent;
+    transition: all 0.2s;
+}
+.pub-link:hover {
+    background: var(--color-white);
+    border-color: var(--color-primary);
+    color: var(--color-primary-dark);
+}
+.pub-link.pdf {
+    background: #fde8e8;
+    color: #c0392b;
+}
+.pub-link.pdf:hover { border-color: #c0392b; }
+
+.pub-empty {
+    text-align: center;
+    padding: 48px 24px;
+    color: var(--color-text-muted);
+}
+
+/* ====== 返回顶部 ====== */
+.back-to-top {
+    position: fixed;
+    bottom: 28px; right: 28px;
+    width: 44px; height: 44px;
+    border-radius: 50%;
+    background: var(--color-card-bg);
+    border: 1px solid var(--color-border);
+    box-shadow: 0 2px 12px var(--color-shadow);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-primary);
+    z-index: 999;
+    opacity: 0;
+    transform: translateY(16px);
+    pointer-events: none;
+    transition: opacity 0.3s, transform 0.3s, box-shadow 0.3s;
+}
+.back-to-top.visible {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+}
+.back-to-top:hover {
+    box-shadow: 0 4px 20px var(--color-shadow-hover);
+    transform: translateY(-2px);
+}
+
+/* ====== Footer ====== */
+.footer {
+    position: relative;
+    z-index: 1;
+    background: var(--color-text);
+    color: rgba(255,255,255,0.7);
+    text-align: center;
+    padding: 40px 24px;
+    transition: background 0.4s;
+}
+[data-theme="dark"] .footer { background: #0d1520; }
+
+.footer-name {
+    font-family: var(--font-serif);
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: #fff;
+    margin-bottom: 4px;
+}
+.footer-info { font-size: 0.86rem; margin-bottom: 10px; }
+.footer-copy { font-size: 0.78rem; color: rgba(255,255,255,0.4); }
+
+/* ====== 响应式 ====== */
+@media (max-width: 768px) {
+    .hero-content {
+        flex-direction: column;
+        text-align: center;
+        gap: 24px;
+    }
+    .hero-name { font-size: 2rem; }
+    .hero-name-zh { font-size: 1.05rem; }
+    .hero-bio { margin-left: auto; margin-right: auto; }
+    .hero-links { justify-content: center; }
+
+    .about-content {
+        grid-template-columns: 1fr;
+        gap: 28px;
+    }
+
+    .lang-toggle, .theme-toggle {
+        width: 32px; height: 32px;
+        font-size: 0.7rem;
+    }
+
+    .nav-toggle { display: flex; }
+
+    .nav-links {
+        position: fixed;
+        top: var(--nav-height);
+        left: 0; right: 0;
+        flex-direction: column;
+        background: rgba(255,255,255,0.96);
+        backdrop-filter: blur(14px);
+        padding: 12px 24px;
+        border-bottom: 1px solid var(--color-border);
+        gap: 2px;
+        transform: translateY(-110%);
+        opacity: 0;
+        transition: transform 0.3s, opacity 0.3s;
+        pointer-events: none;
+    }
+    [data-theme="dark"] .nav-links { background: rgba(21, 32, 43, 0.96); }
+
+    .nav-links.open {
+        transform: translateY(0);
+        opacity: 1;
+        pointer-events: auto;
+    }
+    .nav-links a { padding: 12px 16px; border-radius: 8px; }
+
+    .pub-item { flex-direction: column; gap: 12px; }
+    .pub-thumb { width: 100%; height: 120px; }
+
+    .news-date { min-width: 90px; font-size: 0.74rem; }
+
+    .section { padding: 52px 0; }
+
+    .avatar-placeholder { width: 130px; height: 130px; }
+
+    .hero::before { width: 200px; height: 200px; top: -60px; right: -40px; }
+    .hero::after { width: 100px; height: 100px; bottom: -30px; left: -30px; }
+}
+
+/* ====== 自定义滚动条 ====== */
+::-webkit-scrollbar {
+    width: 6px;
+}
+::-webkit-scrollbar-track {
+    background: transparent;
+}
+::-webkit-scrollbar-thumb {
+    background: var(--color-primary-light);
+    border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: var(--color-primary);
+}
+/* Firefox */
+html {
+    scrollbar-width: thin;
+    scrollbar-color: var(--color-primary-light) transparent;
+}

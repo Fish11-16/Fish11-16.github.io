@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Xi Yu — Undergraduate at Future Technology School, Shenzhen Technology University. Personal academic homepage.">
+    <title>Xi Yu — Personal Academic Homepage</title>
+
+    <!-- Web Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Serif+4:ital,opsz,wght@0,8..60,500;0,8..60,600;0,8..60,700;1,8..60,500&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎓</text></svg>">
+</head>
+<body>
+    <!-- 背景装饰 -->
+    <div class="bg-decoration" aria-hidden="true">
+        <div class="bg-dots"></div>
+    </div>
+
+    <!-- 导航栏 -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="#home" class="nav-brand">Xi Yu</a>
+            <div class="nav-actions">
+                <button class="theme-toggle" id="theme-toggle" title="Toggle dark mode" aria-label="Toggle dark mode">
+                    <svg class="icon-sun" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+                    <svg class="icon-moon" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+                </button>
+                <button class="lang-toggle" id="lang-toggle" title="Switch Language / 切换语言">
+                    <span class="lang-label">中</span>
+                </button>
+                <button class="nav-toggle" id="nav-toggle" aria-label="Menu">
+                    <span></span><span></span><span></span>
+                </button>
+            </div>
+            <ul class="nav-links" id="nav-links">
+                <li><a href="#home" data-i18n="nav.home" class="active">Home</a></li>
+                <li><a href="#news" data-i18n="nav.news">News</a></li>
+                <li><a href="#about" data-i18n="nav.about">About</a></li>
+                <li><a href="#publications" data-i18n="nav.pubs">Publications</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- 首页 Hero -->
+    <section id="home" class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-avatar">
+                    <div class="avatar-placeholder">
+                        <img src="images/avatar.jpg" alt="Xi Yu">
+                    </div>
+                </div>
+                <div class="hero-text">
+                    <h1 class="hero-name">Xi Yu <span class="hero-name-zh">余玺</span></h1>
+                    <p class="hero-affiliation" data-i18n="hero.affiliation">
+                        Future Technology School · Shenzhen Technology University
+                    </p>
+                    <p class="hero-bio" id="hero-bio">
+                        An undergraduate student (Class of 2025) at the Future Technology School, Shenzhen Technology University. Passionate about artificial intelligence and machine learning.
+                    </p>
+                    <div class="hero-links">
+                        <a href="#" class="hero-link" title="GitHub" id="github-link">
+                            <svg viewBox="0 0 24 24" width="18" height="18"><path fill="currentColor" d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61-.546-1.385-1.335-1.755-1.335-1.755-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.605-.015 2.895-.015 3.285 0 .315.21.69.825.57C20.565 21.795 24 17.295 24 12 24 5.37 18.63 0 12 0z"/></svg>
+                            GitHub
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 新闻动态 -->
+    <section id="news" class="section">
+        <div class="container">
+            <h2 class="section-title" data-i18n="news.title">News</h2>
+            <div class="news-list" id="news-list"></div>
+            <div class="pub-empty" id="news-empty" style="display:none;">
+                <p data-i18n="news.empty">No news yet.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 关于我 -->
+    <section id="about" class="section section-alt">
+        <div class="container">
+            <h2 class="section-title" data-i18n="about.title">About Me</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <p id="about-paragraph">
+                        I am an undergraduate student (Class of 2025) at the <strong>Future Technology School, Shenzhen Technology University</strong>. I am passionate about artificial intelligence and machine learning, and I am dedicated to exploring cutting-edge technologies and applying them to real-world problems.
+                    </p>
+                    <div class="research-interests" id="research-interests">
+                        <span class="ri-label">🔬 Research Interests</span>
+                        <div class="ri-tags" id="ri-tags"></div>
+                    </div>
+                    <h3 data-i18n="about.heading">Education</h3>
+                    <ul class="timeline" id="timeline"></ul>
+                </div>
+                <div class="about-stats">
+                    <div class="stat-card">
+                        <div class="stat-number" id="pub-count">0</div>
+                        <div class="stat-label" data-i18n="about.stats.pubs">Publications</div>
+                    </div>
+                    <div class="stat-card" id="stat-citations">
+                        <div class="stat-number" id="citation-count">—</div>
+                        <div class="stat-label" data-i18n="about.stats.citations">Citations</div>
+                        <a href="#" class="stat-scholar-link" target="_blank" id="scholar-link">Google Scholar →</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 论文发表 -->
+    <section id="publications" class="section">
+        <div class="container">
+            <h2 class="section-title" data-i18n="pubs.title">Publications</h2>
+            <div class="pub-filters" id="pub-filters">
+                <button class="pub-filter active" data-filter="all" data-i18n="pubs.filter.all">All</button>
+                <button class="pub-filter" data-filter="journal" data-i18n="pubs.filter.journal">Journal</button>
+                <button class="pub-filter" data-filter="conference" data-i18n="pubs.filter.conference">Conference</button>
+                <button class="pub-filter" data-filter="preprint" data-i18n="pubs.filter.preprint">Preprint</button>
+            </div>
+            <div class="pub-year-nav" id="pub-year-nav"></div>
+            <div class="pub-list" id="pub-list"></div>
+            <div class="pub-empty" id="pub-empty" style="display:none;">
+                <p data-i18n="pubs.empty">No matching publications. Add your papers in <code>js/data.js</code>.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 页脚 -->
+    <footer class="footer">
+        <div class="container">
+            <p class="footer-name">Xi Yu</p>
+            <p class="footer-info" data-i18n="footer.info">Future Technology School, Shenzhen Technology University</p>
+            <p class="footer-copy">&copy; 2025 Xi Yu. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- 返回顶部 -->
+    <button class="back-to-top" id="back-to-top" aria-label="Back to top">
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"/></svg>
+    </button>
+
+    <script src="js/data.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
