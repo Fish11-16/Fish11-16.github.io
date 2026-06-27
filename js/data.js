@@ -136,7 +136,6 @@ const experiences = [
         orgEn: "Youth League Committee, School of Health & Environmental Engineering"
     },
     {
-    {
         periodZh: "2025.04 至今",
         periodEn: "2025.04 — Present",
         titleZh: "科创部干事",
