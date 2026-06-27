@@ -59,8 +59,8 @@ function applyLanguage() {
     document.documentElement.lang = currentLang === 'zh' ? 'zh-CN' : 'en';
 
     document.title = currentLang === 'zh'
-        ? '余玺 | Xi Yu — 个人学术主页'
-        : 'Xi Yu — Personal Academic Homepage';
+        ? 'Xi Yu | 余玺 — 个人学术主页'
+        : 'Xi Yu | 余玺 — Personal Academic Homepage';
 
     updateLangToggleUI();
 }
@@ -362,7 +362,13 @@ function renderExperience() {
     }
     if (empty) empty.style.display = 'none';
 
-    list.innerHTML = experiences.map(item => `
+    // 按结束时间倒序：至今 > 有结束日期的，越近越靠前
+    const sortedExp = [...experiences].sort((a, b) => {
+        const getEnd = (p) => p.includes('至今') || p.includes('Present') ? '9999.99' : p.split('~').pop().trim();
+        return getEnd(b.periodZh).localeCompare(getEnd(a.periodZh));
+    });
+
+    list.innerHTML = sortedExp.map(item => `
         <div class="news-item reveal">
             <span class="news-date">${escapeHtml(currentLang === 'zh' ? item.periodZh : item.periodEn)}</span>
             <span class="news-content">
