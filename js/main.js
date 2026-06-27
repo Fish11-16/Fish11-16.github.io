@@ -365,7 +365,6 @@ function renderExperience() {
     list.innerHTML = experiences.map(item => `
         <div class="news-item reveal">
             <span class="news-date">${escapeHtml(currentLang === 'zh' ? item.periodZh : item.periodEn)}</span>
-            <span class="award-dot">👤</span>
             <span class="news-content">
                 <strong>${escapeHtml(currentLang === 'zh' ? item.titleZh : item.titleEn)}</strong>
                 — ${escapeHtml(currentLang === 'zh' ? item.orgZh : item.orgEn)}
@@ -390,8 +389,6 @@ function renderAwards() {
     }
     if (empty) empty.style.display = 'none';
 
-    const categoryEmoji = { academic: '🎓', competition: '🏅', sport: '🏓', service: '🌟' };
-
     const sorted = [...awards].sort((a, b) => new Date(b.date) - new Date(a.date));
 
     list.innerHTML = sorted.map(item => {
@@ -403,7 +400,6 @@ function renderAwards() {
         return `
             <div class="news-item reveal">
                 <span class="news-date">${dateStr}</span>
-                <span class="award-dot ${item.category}">${categoryEmoji[item.category] || '🏆'}</span>
                 <span class="news-content">${currentLang === 'zh' ? item.titleZh : item.titleEn}</span>
             </div>
         `;
