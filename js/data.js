@@ -175,8 +175,8 @@ const education = [
     {
         periodZh: "2025 — 至今",
         periodEn: "2025 — Present",
-        degreeZh: "本科",
-        degreeEn: "B.Eng.",
+        degreeZh: "人工智能（工学）学士",
+        degreeEn: "B.Eng. in Artificial Intelligence",
         schoolZh: "深圳技术大学",
         schoolEn: "Shenzhen Technology University",
         departmentZh: "未来技术学院",
