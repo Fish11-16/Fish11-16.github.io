@@ -132,9 +132,10 @@ const experiences = [
         periodEn: "2025.09 — Present",
         titleZh: "科创部干事",
         titleEn: "Officer, Academic Innovation Department",
-        orgZh: "健康与环境工程学院共青团委员会",
+        orgZh: "健康与环境工程学院团委",
         orgEn: "Youth League Committee, School of Health & Environmental Engineering"
     },
+    {
     {
         periodZh: "2025.04 至今",
         periodEn: "2025.04 — Present",
