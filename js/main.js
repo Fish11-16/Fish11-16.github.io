@@ -11,6 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initBackToTop();
     renderNews();
     renderAwards();
+    renderExperience();
     renderEducation();
     renderPublications();
     renderResearchInterests();
@@ -36,6 +37,7 @@ function initLanguage() {
             applyLanguage();
             renderNews();
             renderAwards();
+            renderExperience();
             renderEducation();
             renderPublications(getActiveFilter(), getActiveYear());
             renderResearchInterests();
@@ -342,6 +344,34 @@ function renderNews() {
             </div>
         `;
     }).join('');
+
+    refreshRevealObserver();
+}
+
+/* ============================================
+   渲染社会经历 / Render Experience
+   ============================================ */
+function renderExperience() {
+    const list = document.getElementById('experience-list');
+    const empty = document.getElementById('experience-empty');
+    if (!list) return;
+
+    if (!experiences || experiences.length === 0) {
+        if (empty) empty.style.display = 'block';
+        return;
+    }
+    if (empty) empty.style.display = 'none';
+
+    list.innerHTML = experiences.map(item => `
+        <div class="news-item reveal">
+            <span class="news-date">${escapeHtml(currentLang === 'zh' ? item.periodZh : item.periodEn)}</span>
+            <span class="award-dot">👤</span>
+            <span class="news-content">
+                <strong>${escapeHtml(currentLang === 'zh' ? item.titleZh : item.titleEn)}</strong>
+                — ${escapeHtml(currentLang === 'zh' ? item.orgZh : item.orgEn)}
+            </span>
+        </div>
+    `).join('');
 
     refreshRevealObserver();
 }

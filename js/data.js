@@ -109,6 +109,58 @@ const awards = [
     }
 ];
 
+/* ----- 社会经历 / Experience -----
+   每条的字段：
+   - periodZh:  时间段中文（必填）
+   - periodEn:  时间段英文（必填）
+   - titleZh:   职位/经历中文（必填）
+   - titleEn:   职位/经历英文（必填）
+   - orgZh:     组织/单位中文（必填）
+   - orgEn:     组织/单位英文（必填）
+*/
+const experiences = [
+    {
+        periodZh: "2025.9 ~ 2026.6",
+        periodEn: "Sep 2025 — Jun 2026",
+        titleZh: "班长兼团支书",
+        titleEn: "Class Monitor & League Branch Secretary",
+        orgZh: "25级智能医学工程2班",
+        orgEn: "Class 2, Intelligent Medical Engineering (Grade 2025)"
+    },
+    {
+        periodZh: "2025.9 至今",
+        periodEn: "Sep 2025 — Present",
+        titleZh: "科创部干事",
+        titleEn: "Officer, Academic Innovation Department",
+        orgZh: "健康与环境工程学院共青团委员会",
+        orgEn: "Youth League Committee, School of Health & Environmental Engineering"
+    },
+    {
+        periodZh: "2025.4 至今",
+        periodEn: "Apr 2025 — Present",
+        titleZh: "科创部干事",
+        titleEn: "Officer, Academic Innovation Department",
+        orgZh: "未来技术学院",
+        orgEn: "Future Technology School"
+    },
+    {
+        periodZh: "2025.5 至今",
+        periodEn: "May 2025 — Present",
+        titleZh: "副班长",
+        titleEn: "Vice Monitor",
+        orgZh: "25级新才班（TOP Class）",
+        orgEn: "TOP Class (Grade 2025)"
+    },
+    {
+        periodZh: "2026.6 至今",
+        periodEn: "Jun 2026 — Present",
+        titleZh: "乒乓球校队女队队长",
+        titleEn: "Captain, Women's Table Tennis Team",
+        orgZh: "深圳技术大学",
+        orgEn: "Shenzhen Technology University"
+    }
+];
+
 /* ----- 研究方向 / Research Interests ----- */
 const researchInterests = [
     { zh: "人工智能",        en: "Artificial Intelligence" },
@@ -204,6 +256,7 @@ const i18n = {
     "nav.home":     { en: "Home",        zh: "首页" },
     "nav.news":     { en: "News",        zh: "动态" },
     "nav.awards":   { en: "Awards",      zh: "获奖" },
+    "nav.experience": { en: "Experience", zh: "经历" },
     "nav.about":    { en: "About",        zh: "关于我" },
     "nav.pubs":     { en: "Publications", zh: "论文发表" },
     "nav.projects": { en: "Projects",     zh: "科研项目" },
@@ -222,6 +275,10 @@ const i18n = {
     // 获奖 / Awards
     "awards.title": { en: "Honors & Awards", zh: "获奖经历" },
     "awards.empty": { en: "No awards yet.",   zh: "暂无获奖。" },
+
+    // 社会经历 / Experience
+    "experience.title": { en: "Experience", zh: "社会经历" },
+    "experience.empty": { en: "No experience listed yet.", zh: "暂无经历。" },
 
     // 关于我 / About
     "about.title":  { en: "About Me",         zh: "关于我" },
