@@ -58,9 +58,7 @@ function applyLanguage() {
 
     document.documentElement.lang = currentLang === 'zh' ? 'zh-CN' : 'en';
 
-    document.title = currentLang === 'zh'
-        ? 'Xi Yu | 余玺 — 个人学术主页'
-        : 'Xi Yu | 余玺 — Personal Academic Homepage';
+    document.title = 'Xi Yu | 余玺';
 
     updateLangToggleUI();
 }
