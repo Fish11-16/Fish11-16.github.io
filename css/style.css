@@ -481,6 +481,13 @@ img { max-width: 100%; height: auto; }
     font-weight: 500;
 }
 
+/* 获奖类别标记 */
+.award-dot { font-size: 0.85rem; flex-shrink: 0; }
+.award-dot.academic    { opacity: 0.85; }
+.award-dot.competition { opacity: 0.85; }
+.award-dot.sport       { opacity: 0.85; }
+.award-dot.service     { opacity: 0.85; }
+
 /* ====== 关于我 ====== */
 .about-content {
     display: grid;

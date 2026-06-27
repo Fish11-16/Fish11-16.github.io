@@ -10,6 +10,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initRevealObserver();
     initBackToTop();
     renderNews();
+    renderAwards();
     renderEducation();
     renderPublications();
     renderResearchInterests();
@@ -34,6 +35,7 @@ function initLanguage() {
             localStorage.setItem('lang', currentLang);
             applyLanguage();
             renderNews();
+            renderAwards();
             renderEducation();
             renderPublications(getActiveFilter(), getActiveYear());
             renderResearchInterests();
@@ -337,6 +339,42 @@ function renderNews() {
                 <span class="news-date">${dateStr}</span>
                 <span class="news-dot">${typeEmoji[item.type] || '📌'}</span>
                 <span class="news-content">${currentLang === 'zh' ? item.contentZh : item.contentEn}</span>
+            </div>
+        `;
+    }).join('');
+
+    refreshRevealObserver();
+}
+
+/* ============================================
+   渲染获奖经历 / Render Awards
+   ============================================ */
+function renderAwards() {
+    const list = document.getElementById('awards-list');
+    const empty = document.getElementById('awards-empty');
+    if (!list) return;
+
+    if (!awards || awards.length === 0) {
+        if (empty) empty.style.display = 'block';
+        return;
+    }
+    if (empty) empty.style.display = 'none';
+
+    const categoryEmoji = { academic: '🎓', competition: '🏅', sport: '🏓', service: '🌟' };
+
+    const sorted = [...awards].sort((a, b) => new Date(b.date) - new Date(a.date));
+
+    list.innerHTML = sorted.map(item => {
+        const d = new Date(item.date);
+        const dateStr = currentLang === 'zh'
+            ? `${d.getFullYear()}年${d.getMonth() + 1}月`
+            : d.toLocaleDateString('en-US', { year: 'numeric', month: 'long' });
+
+        return `
+            <div class="news-item reveal">
+                <span class="news-date">${dateStr}</span>
+                <span class="award-dot ${item.category}">${categoryEmoji[item.category] || '🏆'}</span>
+                <span class="news-content">${currentLang === 'zh' ? item.titleZh : item.titleEn}</span>
             </div>
         `;
     }).join('');

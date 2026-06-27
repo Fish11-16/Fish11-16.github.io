@@ -39,6 +39,76 @@ const news = [
     }
 ];
 
+/* ----- 获奖经历 / Awards -----
+   每条的字段：
+   - date:      日期，格式 "YYYY-MM-DD" 或 "YYYY-MM"（必填）
+   - titleZh:   中文奖项名称（必填）
+   - titleEn:   英文奖项名称（必填）
+   - category:  类别：'academic' | 'competition' | 'sport' | 'service'（必填）
+*/
+const awards = [
+    {
+        date: "2025-12",
+        titleZh: "健康与环境工程学院团委优秀部员",
+        titleEn: "Outstanding Member, Youth League Committee of Health & Environmental Engineering",
+        category: "service"
+    },
+    {
+        date: "2025-12",
+        titleZh: "乒乓球校长杯第六名",
+        titleEn: "6th Place, President's Cup Table Tennis Tournament",
+        category: "sport"
+    },
+    {
+        date: "2026-04",
+        titleZh: "广东省程序设计竞赛（GDCPC）三等奖",
+        titleEn: "Third Prize, Guangdong Provincial Programming Contest (GDCPC)",
+        category: "competition"
+    },
+    {
+        date: "2026-05",
+        titleZh: "全国大学生节能减排社会实践与科技竞赛校级一等奖",
+        titleEn: "First Prize (University Level), National College Student Energy Conservation & Emission Reduction Competition",
+        category: "academic"
+    },
+    {
+        date: "2026-05",
+        titleZh: "大学生创新训练计划项目省级立项",
+        titleEn: "Provincial-Level Project, National Undergraduate Innovation Training Program",
+        category: "academic"
+    },
+    {
+        date: "2026-05",
+        titleZh: "GPLT团体程序设计天梯赛全国团队三等奖",
+        titleEn: "National Team Third Prize, Group Programming Ladder Tournament (GPLT)",
+        category: "competition"
+    },
+    {
+        date: "2026-05",
+        titleZh: "GPLT团体程序设计天梯赛广东省二等奖",
+        titleEn: "Guangdong Provincial Second Prize, Group Programming Ladder Tournament (GPLT)",
+        category: "competition"
+    },
+    {
+        date: "2026-05",
+        titleZh: "乒乓球校长杯第三名",
+        titleEn: "3rd Place, President's Cup Table Tennis Tournament",
+        category: "sport"
+    },
+    {
+        date: "2026-06",
+        titleZh: "中国国际大学生创新大赛未来技术学院三等奖",
+        titleEn: "Third Prize, China International College Students' Innovation Competition (Future Technology School)",
+        category: "competition"
+    },
+    {
+        date: "2026-06",
+        titleZh: "码蹄杯程序设计竞赛广东省三等奖",
+        titleEn: "Third Prize (Guangdong), Mati Cup Programming Contest",
+        category: "competition"
+    }
+];
+
 /* ----- 研究方向 / Research Interests ----- */
 const researchInterests = [
     { zh: "人工智能",        en: "Artificial Intelligence" },
@@ -133,6 +203,7 @@ const i18n = {
     // 导航 / Nav
     "nav.home":     { en: "Home",        zh: "首页" },
     "nav.news":     { en: "News",        zh: "动态" },
+    "nav.awards":   { en: "Awards",      zh: "获奖" },
     "nav.about":    { en: "About",        zh: "关于我" },
     "nav.pubs":     { en: "Publications", zh: "论文发表" },
     "nav.projects": { en: "Projects",     zh: "科研项目" },
@@ -147,6 +218,10 @@ const i18n = {
     // 新闻 / News
     "news.title":   { en: "News",            zh: "新闻动态" },
     "news.empty":   { en: "No news yet.",    zh: "暂无动态。" },
+
+    // 获奖 / Awards
+    "awards.title": { en: "Honors & Awards", zh: "获奖经历" },
+    "awards.empty": { en: "No awards yet.",   zh: "暂无获奖。" },
 
     // 关于我 / About
     "about.title":  { en: "About Me",         zh: "关于我" },
