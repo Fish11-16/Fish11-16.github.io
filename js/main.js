@@ -426,6 +426,7 @@ function renderEducation() {
                 ${escapeHtml(currentLang === 'zh' ? item.schoolZh : item.schoolEn)},
                 ${escapeHtml(currentLang === 'zh' ? item.departmentZh : item.departmentEn)}
             </span>
+            ${item.logo ? `<img src="${item.logo}" alt="" class="timeline-logo">` : ''}
         </li>
     `).join('');
 }

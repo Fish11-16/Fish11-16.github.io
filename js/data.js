@@ -180,7 +180,8 @@ const education = [
         schoolZh: "深圳技术大学",
         schoolEn: "Shenzhen Technology University",
         departmentZh: "未来技术学院",
-        departmentEn: "Future Technology School"
+        departmentEn: "Future Technology School",
+        logo: "images/school-logo.webp"
     }
 ];
 

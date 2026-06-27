@@ -550,6 +550,16 @@ img { max-width: 100%; height: auto; }
 
 .timeline-desc { color: var(--color-text-light); }
 
+.timeline-logo {
+    margin-left: auto;
+    height: 36px;
+    width: auto;
+    opacity: 0.75;
+    transition: opacity 0.2s;
+}
+.timeline-logo:hover { opacity: 1; }
+.timeline-item:has(.timeline-logo) { align-items: center; }
+
 /* 统计数据 */
 .about-stats {
     display: flex;
