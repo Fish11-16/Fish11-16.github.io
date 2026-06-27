@@ -432,7 +432,7 @@ function renderAwards() {
    渲染教育背景 / Render Education
    ============================================ */
 function renderEducation() {
-    const timeline = document.querySelector('.timeline');
+    const timeline = document.getElementById('timeline');
     if (!timeline) return;
 
     timeline.innerHTML = education.map(item => `
