@@ -50,7 +50,7 @@ const awards = [
     {
         date: "2025-12",
         titleZh: "健康与环境工程学院团委优秀部员",
-        titleEn: "Outstanding Member, Youth League Committee of Health & Environmental Engineering",
+        titleEn: "Outstanding Member, Youth League Committee, College of Health Science and Environmental Engineering",
         category: "service"
     },
     {
@@ -133,7 +133,7 @@ const experiences = [
         titleZh: "科创部干事",
         titleEn: "Officer, Academic Innovation Department",
         orgZh: "健康与环境工程学院团委",
-        orgEn: "Youth League Committee, School of Health & Environmental Engineering"
+        orgEn: "Youth League Committee, College of Health Science and Environmental Engineering"
     },
     {
         periodZh: "2025.04 至今",
