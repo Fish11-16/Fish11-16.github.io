@@ -365,7 +365,6 @@ function renderExperience() {
     list.innerHTML = experiences.map(item => `
         <div class="news-item reveal">
             <span class="news-date">${escapeHtml(currentLang === 'zh' ? item.periodZh : item.periodEn)}</span>
-            <span class="news-marker">👤</span>
             <span class="news-content">
                 <strong>${escapeHtml(currentLang === 'zh' ? item.titleZh : item.titleEn)}</strong>
                 — ${escapeHtml(currentLang === 'zh' ? item.orgZh : item.orgEn)}
