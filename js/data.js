@@ -60,7 +60,7 @@ const awards = [
         category: "sport"
     },
     {
-        date: "2026-04",
+        date: "2026-05",
         titleZh: "广东省程序设计竞赛（GDCPC）三等奖",
         titleEn: "Third Prize, Guangdong Provincial Programming Contest (GDCPC)",
         category: "competition"
