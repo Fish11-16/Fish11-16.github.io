@@ -332,9 +332,8 @@ function renderNews() {
 
     list.innerHTML = sorted.map(item => {
         const d = new Date(item.date);
-        const dateStr = currentLang === 'zh'
-            ? `${d.getFullYear()}年${d.getMonth() + 1}月${d.getDate()}日`
-            : d.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+        const pad = n => String(n).padStart(2, '0');
+        const dateStr = `${d.getFullYear()}.${pad(d.getMonth() + 1)}.${pad(d.getDate())}`;
 
         return `
             <div class="news-item reveal">
@@ -401,9 +400,8 @@ function renderAwards() {
 
     list.innerHTML = sorted.map(item => {
         const d = new Date(item.date);
-        const dateStr = currentLang === 'zh'
-            ? `${d.getFullYear()}年${d.getMonth() + 1}月`
-            : d.toLocaleDateString('en-US', { year: 'numeric', month: 'long' });
+        const pad = n => String(n).padStart(2, '0');
+        const dateStr = `${d.getFullYear()}.${pad(d.getMonth() + 1)}`;
 
         return `
             <div class="news-item reveal">

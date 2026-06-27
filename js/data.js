@@ -120,40 +120,40 @@ const awards = [
 */
 const experiences = [
     {
-        periodZh: "2025.9 ~ 2026.6",
-        periodEn: "Sep 2025 — Jun 2026",
+        periodZh: "2025.09 ~ 2026.06",
+        periodEn: "2025.09 — 2026.06",
         titleZh: "班长兼团支书",
         titleEn: "Class Monitor & League Branch Secretary",
         orgZh: "25级智能医学工程2班",
         orgEn: "Class 2, Intelligent Medical Engineering (Grade 2025)"
     },
     {
-        periodZh: "2025.9 至今",
-        periodEn: "Sep 2025 — Present",
+        periodZh: "2025.09 至今",
+        periodEn: "2025.09 — Present",
         titleZh: "科创部干事",
         titleEn: "Officer, Academic Innovation Department",
         orgZh: "健康与环境工程学院共青团委员会",
         orgEn: "Youth League Committee, School of Health & Environmental Engineering"
     },
     {
-        periodZh: "2025.4 至今",
-        periodEn: "Apr 2025 — Present",
+        periodZh: "2025.04 至今",
+        periodEn: "2025.04 — Present",
         titleZh: "科创部干事",
         titleEn: "Officer, Academic Innovation Department",
         orgZh: "未来技术学院",
         orgEn: "Future Technology School"
     },
     {
-        periodZh: "2025.5 至今",
-        periodEn: "May 2025 — Present",
+        periodZh: "2025.05 至今",
+        periodEn: "2025.05 — Present",
         titleZh: "副班长",
         titleEn: "Vice Monitor",
         orgZh: "25级新才班（TOP Class）",
         orgEn: "TOP Class (Grade 2025)"
     },
     {
-        periodZh: "2026.6 至今",
-        periodEn: "Jun 2026 — Present",
+        periodZh: "2026.06 至今",
+        periodEn: "2026.06 — Present",
         titleZh: "乒乓球校队女队队长",
         titleEn: "Captain, Women's Table Tennis Team",
         orgZh: "深圳技术大学",
