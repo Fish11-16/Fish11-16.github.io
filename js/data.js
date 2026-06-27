@@ -124,32 +124,32 @@ const experiences = [
         periodEn: "2025.09 — 2026.06",
         titleZh: "班长兼团支书",
         titleEn: "Class Monitor & League Branch Secretary",
-        orgZh: "25级智能医学工程2班",
-        orgEn: "Class 2, Intelligent Medical Engineering (Grade 2025)"
+        orgZh: "25级智能医学工程2班，深圳技术大学",
+        orgEn: "Class 2, Intelligent Medical Engineering (Grade 2025), Shenzhen Technology University"
     },
     {
         periodZh: "2025.09 至今",
         periodEn: "2025.09 — Present",
         titleZh: "科创部干事",
         titleEn: "Officer, Academic Innovation Department",
-        orgZh: "健康与环境工程学院团委",
-        orgEn: "Youth League Committee, College of Health Science and Environmental Engineering"
+        orgZh: "健康与环境工程学院团委，深圳技术大学",
+        orgEn: "Youth League Committee, College of Health Science and Environmental Engineering, SZTU"
     },
     {
         periodZh: "2026.04 至今",
         periodEn: "2026.04 — Present",
         titleZh: "科创部干事",
         titleEn: "Officer, Academic Innovation Department",
-        orgZh: "未来技术学院",
-        orgEn: "Future Technology School"
+        orgZh: "未来技术学院，深圳技术大学",
+        orgEn: "Future Technology School, SZTU"
     },
     {
         periodZh: "2026.05 至今",
         periodEn: "2026.05 — Present",
         titleZh: "副班长",
         titleEn: "Vice Monitor",
-        orgZh: "25级新才班（TOP Class）",
-        orgEn: "TOP Class (Grade 2025)"
+        orgZh: "25级新才班（TOP Class），深圳技术大学",
+        orgEn: "TOP Class (Grade 2025), Shenzhen Technology University"
     },
     {
         periodZh: "2026.06 至今",
