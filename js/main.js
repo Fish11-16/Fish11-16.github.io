@@ -359,10 +359,25 @@ function renderExperience() {
     }
     if (empty) empty.style.display = 'none';
 
-    // 按结束时间倒序：至今 > 有结束日期的，越近越靠前
+    // 按时间倒序：至今项按开始时间排，已结束项按结束时间排，至今总在前面
     const sortedExp = [...experiences].sort((a, b) => {
-        const getEnd = (p) => p.includes('至今') || p.includes('Present') ? '9999.99' : p.split('~').pop().trim();
-        return getEnd(b.periodZh).localeCompare(getEnd(a.periodZh));
+        const parse = (p) => {
+            const isOngoing = p.includes('至今') || p.includes('Present');
+            // 取时间段靠后的日期：至今用99，否则取结束日期
+            const parts = p.replace(/[^\d.]/g, ' ').trim().split(/\s+/);
+            const start = parseFloat(parts[0]) || 0;
+            const end = isOngoing ? 9999.99 : (parseFloat(parts[1]) || 0);
+            return { isOngoing, start, end };
+        };
+        const pa = parse(a.periodZh);
+        const pb = parse(b.periodZh);
+        // 至今优先
+        if (pa.isOngoing && !pb.isOngoing) return -1;
+        if (!pa.isOngoing && pb.isOngoing) return 1;
+        // 同为至今：按开始时间倒序
+        if (pa.isOngoing && pb.isOngoing) return pb.start - pa.start;
+        // 同为已结束：按结束时间倒序
+        return pb.end - pa.end;
     });
 
     list.innerHTML = sortedExp.map(item => `
