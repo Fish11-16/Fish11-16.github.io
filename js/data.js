@@ -136,16 +136,16 @@ const experiences = [
         orgEn: "Youth League Committee, College of Health Science and Environmental Engineering"
     },
     {
-        periodZh: "2025.04 至今",
-        periodEn: "2025.04 — Present",
+        periodZh: "2026.04 至今",
+        periodEn: "2026.04 — Present",
         titleZh: "科创部干事",
         titleEn: "Officer, Academic Innovation Department",
         orgZh: "未来技术学院",
         orgEn: "Future Technology School"
     },
     {
-        periodZh: "2025.05 至今",
-        periodEn: "2025.05 — Present",
+        periodZh: "2026.05 至今",
+        periodEn: "2026.05 — Present",
         titleZh: "副班长",
         titleEn: "Vice Monitor",
         orgZh: "25级新才班（TOP Class）",
