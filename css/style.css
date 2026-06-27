@@ -469,6 +469,13 @@ img { max-width: 100%; height: auto; }
 
 .news-dot { font-size: 0.85rem; flex-shrink: 0; }
 
+.news-marker,
+.news-dot {
+    width: 24px;
+    text-align: center;
+    flex-shrink: 0;
+}
+
 .news-content {
     font-size: 0.93rem;
     color: var(--color-text-light);
