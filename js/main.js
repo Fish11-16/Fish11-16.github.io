@@ -436,15 +436,22 @@ function renderEducation() {
     if (!timeline) return;
 
     timeline.innerHTML = education.map(item => `
-        <li class="timeline-item">
-            <span class="timeline-year">${escapeHtml(currentLang === 'zh' ? item.periodZh : item.periodEn)}</span>
-            <span class="timeline-desc">
-                <strong>${escapeHtml(currentLang === 'zh' ? item.degreeZh : item.degreeEn)}</strong>,
-                ${escapeHtml(currentLang === 'zh' ? item.schoolZh : item.schoolEn)},
-                ${escapeHtml(currentLang === 'zh' ? item.departmentZh : item.departmentEn)}
-            </span>
-            ${item.logo ? `<img src="${item.logo}" alt="" class="timeline-logo">` : ''}
-        </li>
+        <div class="edu-card reveal">
+            <div class="edu-logo">
+                ${item.logo ? `<img src="${item.logo}" alt="">` : ''}
+            </div>
+            <div class="edu-body">
+                <div class="edu-title">
+                    <strong>${escapeHtml(currentLang === 'zh' ? item.degreeZh : item.degreeEn)}</strong>
+                    — ${escapeHtml(currentLang === 'zh' ? item.schoolZh : item.schoolEn)},
+                    ${escapeHtml(currentLang === 'zh' ? item.departmentZh : item.departmentEn)}
+                </div>
+                <div class="edu-meta">
+                    <span class="edu-period">${escapeHtml(currentLang === 'zh' ? item.periodZh : item.periodEn)}</span>
+                    ${item.gpa ? `<span class="edu-gpa">GPA ${item.gpa} · ${escapeHtml(currentLang === 'zh' ? item.gpaNoteZh : item.gpaNoteEn)}</span>` : ''}
+                </div>
+            </div>
+        </div>
     `).join('');
 }
 

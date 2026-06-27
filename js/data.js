@@ -181,7 +181,10 @@ const education = [
         schoolEn: "Shenzhen Technology University",
         departmentZh: "未来技术学院",
         departmentEn: "Future Technology School",
-        logo: "images/school-logo.webp"
+        logo: "images/school-logo.webp",
+        gpa: "4.2 / 4.5",
+        gpaNoteZh: "均分 91.98 / 100",
+        gpaNoteEn: "Average 91.98 / 100"
     }
 ];
 
